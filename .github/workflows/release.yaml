@@ -10,8 +10,15 @@ jobs:
     name: Initialize 
     runs-on: ubuntu-latest
     steps:
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
       run: sudo apt-get update ; sudo apt-get install -y libasound2-dev ; sudo apt-get install -y libxml2-utils
-      
+
   check:
     name: Check
     runs-on: ${{matrix.os}}
